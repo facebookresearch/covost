@@ -11,6 +11,11 @@ Please also check out [our paper](https://arxiv.org/abs/2002.01320) for more det
 
 <p align="center"><img src="stats.png" alt="CoVoST Statistics" width="640"></p>
 
+## What's New
+- __2020-02-27__: [Google Colab example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) added for exploring CoVoST data with VizSeq 
+- __2020-02-13__: [Paper](https://arxiv.org/abs/2002.01320) accepted to [LREC 2020](https://lrec2020.lrec-conf.org/en/) (Oral)
+- __2020-02-07__: CoVoST released
+
 ## Getting Data
 
 ### CoVoST
@@ -38,6 +43,9 @@ to `data/tt/*`.
 ```bash
 python get_tt_speech.py --root <mp3 download root (default to data/tt/mp3)>
 ```
+
+## Exploring Data
+[Google Colab example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV)
 
 ## License
 |  | License |
