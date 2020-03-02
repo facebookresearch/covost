@@ -1,18 +1,28 @@
 CoVoST: A Diverse Multilingual Speech-To-Text Translation Corpus
 ======
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-green.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+<a href="https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV">
+    <img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg?style=flat-square">
+</a>
 
-CoVoST is built on [Common Voice](https://arxiv.org/abs/1912.06670) (2019-06-12 release). It includes speeches in
-11 languages (French, German, Dutch, Russian, Spanish, Italian, Turkish, Persian, Swedish, Mongolian and Chinese),
+
+[End-to-end speech translation](https://github.com/kahne/SpeechTransProgress) (E2E ST) has recently witnessed an increased
+interest given its system simplicity, lower inference latency and less compounding errors compared to cascaded
+one (speech recognition + machine translation). E2E ST model training, however, is often hampered by the lack of parallel
+data. Thus, we created [CoVoST](https://arxiv.org/abs/2002.01320), a large & diverse multilingual speech-to-text
+translation corpus based on [Common Voice](https://arxiv.org/abs/1912.06670) (2019-06-12 release). It includes speeches
+in 11 languages (French, German, Dutch, Russian, Spanish, Italian, Turkish, Persian, Swedish, Mongolian and Chinese),
 their transcripts and English translations. We also provide an additional out-of-domain evaluation set
-from [Tatoeba](https://tatoeba.org/eng) for 5 languages (French, German, Dutch, Russian and Spanish).
+from [Tatoeba](https://tatoeba.org/eng) for 5 languages (French, German, Dutch, Russian and Spanish) into English.
 
-Please also check out [our paper](https://arxiv.org/abs/2002.01320) for more details.
+Please check out [our paper](https://arxiv.org/abs/2002.01320) for more details and
+the [VizSeq example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) for exploring CoVoST data.
 
 <p align="center"><img src="stats.png" alt="CoVoST Statistics" width="640"></p>
 
 ## What's New
-- __2020-02-27__: [Google Colab example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) added for exploring CoVoST data with VizSeq 
+- __2020-02-27__: [Example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) added for
+exploring CoVoST data with [VizSeq](https://github.com/facebookresearch/vizseq) 
 - __2020-02-13__: [Paper](https://arxiv.org/abs/2002.01320) accepted to [LREC 2020](https://lrec2020.lrec-conf.org/en/) (Oral)
 - __2020-02-07__: CoVoST released
 
@@ -45,7 +55,10 @@ python get_tt_speech.py --root <mp3 download root (default to data/tt/mp3)>
 ```
 
 ## Exploring Data
-[Google Colab example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV)
+[VizSeq Example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV)
+<a href="https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV">
+    <img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg?style=flat-square">
+</a>
 
 ## License
 |  | License |
