@@ -65,7 +65,7 @@ python get_tt_speech.py --root <mp3 download root (default to data/tt/mp3)>
 | ------------- |:-------------:|
 | CoVoST data | [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/) |
 | Tatoeba sentences | [CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/) |
-| Tatoeba speeches | Various CC licenses (please check out `data/tt/tatoeba_s2t.<lang>_en.<lang>_lic`) |
+| Tatoeba speeches | Various CC licenses (please check out the "audio_license" column in `data/tt/tatoeba20191004.s2t.<lang>_en.tsv`) |
 | Anything else | [CC BY-NC 4.0](https://github.com/facebookresearch/covost/blob/master/LICENSE) |
 
 ## Citation

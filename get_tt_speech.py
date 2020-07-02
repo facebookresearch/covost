@@ -42,8 +42,9 @@ def main():
     for lang in LANG_CODE_2_TO_3:
         print(f'Downloading {lang} speeches...')
         lang_3 = LANG_CODE_2_TO_3[lang]
-        with open(f'data/tt/tatoeba_s2t.{lang}_en.{lang}_id') as f:
-            ids = [r.strip() for r in f]
+        with open(f'data/tt/tatoeba20191004.s2t.{lang}_en.tsv') as f:
+            next(f)
+            ids = [r.strip().split('\t')[0] for r in f]
 
         for i in tqdm(ids):
             _download_mp3(args.root, lang_3, i)
