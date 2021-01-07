@@ -11,15 +11,16 @@ increased interest given its system simplicity, lower inference latency and less
 ST (i.e. speech recognition + machine translation). End-to-end ST model training, however, is often hampered by the
 lack of parallel data. Thus, we created [CoVoST](https://arxiv.org/abs/2002.01320), a large-scale multilingual ST corpus
 based on [Common Voice](https://arxiv.org/abs/1912.06670), to foster ST research with the largest ever open dataset.
-Its latest version covers translations from English into 15 languages---Arabic, Catalan, Welsh, German, Estonian, Persian,
-Indonesian, Japanese, Latvian, Mongolian, Slovenian, Swedish, Tamil, Turkish, Chinese---and from 21 languages into English,
-including the 15 target languages as well as Spanish, French, Italian, Dutch, Portuguese, Russian. It has total 2880 hours
-of speech and is diversified with 78K speakers.
+Its latest version covers translations from English into 15 languages---Arabic, Catalan, Welsh, German, Estonian, 
+Persian, Indonesian, Japanese, Latvian, Mongolian, Slovenian, Swedish, Tamil, Turkish, Chinese---and from 21 languages 
+into English, including the 15 target languages as well as Spanish, French, Italian, Dutch, Portuguese, Russian. It has 
+total 2,880 hours of speech and is diversified with 78K speakers.
 
 <p align="center"><img src="overview.png" alt="CoVoST Overview" width="480"></p>
 
-Please check out our papers ([CoVoST 1](https://arxiv.org/abs/2002.01320), [CoVoST 2](https://arxiv.org/pdf/2007.10310)) for more details and
-the [VizSeq example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) for exploring CoVoST data.
+Please check out our papers ([CoVoST 1](https://arxiv.org/abs/2002.01320), [CoVoST 2](https://arxiv.org/pdf/2007.10310)) 
+for more details and the [VizSeq example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) for
+exploring CoVoST data.
 
 <p align="center"><img src="stats2.png" alt="CoVoST Statistics" width="560"></p>
 
@@ -27,65 +28,134 @@ We also provide an additional out-of-domain evaluation set
 from [Tatoeba](https://tatoeba.org/eng) for 5 languages (French, German, Dutch, Russian and Spanish) into English.
 
 ## What's New
-- __2020-07-21__: CoVoST 2 released ([arXiv paper](https://arxiv.org/pdf/2007.10310)).
-- __2020-02-27__: [Example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) added for
+- __2021-01-06__: Data splitting script added. 
+  [Fairseq S2T example](https://github.com/pytorch/fairseq/tree/master/examples/speech_to_text) added for model training.
+- __2020-07-21__: CoVoST 2 released ([arXiv paper](https://arxiv.org/pdf/2007.10310)) with 25 new translation directions.
+- __2020-02-27__: [Colab example](https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV) added for
 exploring CoVoST data with [VizSeq](https://github.com/facebookresearch/vizseq).
 - __2020-02-13__: [Paper](https://arxiv.org/abs/2002.01320) accepted to LREC 2020.
 - __2020-02-07__: CoVoST released.
 
 ## Getting Data
 
+<details><summary>Language code</summary><p>
+
+| Lang | Code |
+|---|---|
+| English | en |
+| French | fr |
+| German | de |
+| Spanish | es |
+| Catalan | ca |
+| Italian | it |
+| Russian | ru |
+| Chinese | zh-CN | 
+| Portuguese | pt |
+| Persian | fa |
+| Estonian | et |
+| Mongolian | mn |
+| Dutch | nl |
+| Turkish | tr |
+| Arabic | ar |
+| Swedish | sv-SE |
+| Latvian | lv |
+| Slovenian | sl |
+| Tamil | ta |
+| Japanese | ja |
+| Indonesian | id |
+| Welsh | cy |
+</p></details>
+
 ### CoVoST 2
-1. Get voice clips and transcripts from Common Voice 2019-12-10 release:
-[English (en)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/en.tar.gz),
-[French (fr)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/fr.tar.gz),
-[German (de)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/de.tar.gz),
-[Spanish (es)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/es.tar.gz),
-[Catalan (ca)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/ca.tar.gz),
-[Italian (it)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/it.tar.gz),
-[Russian (ru)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/ru.tar.gz),
-[Chinese (zh-CN)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/zh-CN.tar.gz),
-[Portuguese (pt)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/pt.tar.gz),
-[Persian (fa)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/fa.tar.gz),
-[Estonian (et)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/et.tar.gz),
-[Mongolian (mn)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/mn.tar.gz),
-[Dutch (nl)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/nl.tar.gz),
-[Turkish (tr)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/tr.tar.gz),
-[Arabic (ar)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/ar.tar.gz),
-[Swedish (sv-SE)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/sv-SE.tar.gz),
-[Latvian (lv)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/lv.tar.gz),
-[Slovenian (sl)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/sl.tar.gz),
-[Tamil (ta)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/ta.tar.gz),
-[Japanese (ja)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/ja.tar.gz),
-[Indonesian (id)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/id.tar.gz),
-[Welsh (cy)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-4-2019-12-10/cy.tar.gz).
-2. Download [CoVoST 2 translations](https://dl.fbaipublicfiles.com/covost/covost2.zip),
-where `validated.<lang>_en.en` and `validated.en_<lang>.<lang>` are matched with the transcripts in `validated.tsv`.
+1. Download [Common Voice audio clips and transcripts](https://commonvoice.mozilla.org/en/datasets) (version 4).
+2. Download CoVoST 2 translations (`covost_v2.<src_lang_code>_<tgt_lang_code>.tsv`, which matches the rows in 
+   `validated.tsv` from Common Voice):
+- X into English: [French](https://dl.fbaipublicfiles.com/covost/covost_v2.fr_en.tsv.tar.gz),
+  [German](https://dl.fbaipublicfiles.com/covost/covost_v2.de_en.tsv.tar.gz),
+  [Spanish](https://dl.fbaipublicfiles.com/covost/covost_v2.es_en.tsv.tar.gz),
+  [Catalan](https://dl.fbaipublicfiles.com/covost/covost_v2.ca_en.tsv.tar.gz),
+  [Italian](https://dl.fbaipublicfiles.com/covost/covost_v2.it_en.tsv.tar.gz),
+  [Russian](https://dl.fbaipublicfiles.com/covost/covost_v2.ru_en.tsv.tar.gz),
+  [Chinese](https://dl.fbaipublicfiles.com/covost/covost_v2.zh-CN_en.tsv.tar.gz),
+  [Portuguese](https://dl.fbaipublicfiles.com/covost/covost_v2.pt_en.tsv.tar.gz),
+  [Persian](https://dl.fbaipublicfiles.com/covost/covost_v2.fa_en.tsv.tar.gz),
+  [Estonian](https://dl.fbaipublicfiles.com/covost/covost_v2.et_en.tsv.tar.gz),
+  [Mongolian](https://dl.fbaipublicfiles.com/covost/covost_v2.mn_en.tsv.tar.gz),
+  [Dutch](https://dl.fbaipublicfiles.com/covost/covost_v2.nl_en.tsv.tar.gz),
+  [Turkish](https://dl.fbaipublicfiles.com/covost/covost_v2.tr_en.tsv.tar.gz),
+  [Arabic](https://dl.fbaipublicfiles.com/covost/covost_v2.ar_en.tsv.tar.gz),
+  [Swedish](https://dl.fbaipublicfiles.com/covost/covost_v2.sv-SE_en.tsv.tar.gz),
+  [Latvian](https://dl.fbaipublicfiles.com/covost/covost_v2.lv_en.tsv.tar.gz),
+  [Slovenian](https://dl.fbaipublicfiles.com/covost/covost_v2.sl_en.tsv.tar.gz),
+  [Tamil](https://dl.fbaipublicfiles.com/covost/covost_v2.ta_en.tsv.tar.gz),
+  [Japanese](https://dl.fbaipublicfiles.com/covost/covost_v2.ja_en.tsv.tar.gz),
+  [Indonesian](https://dl.fbaipublicfiles.com/covost/covost_v2.id_en.tsv.tar.gz),
+  [Welsh](https://dl.fbaipublicfiles.com/covost/covost_v2.cy_en.tsv.tar.gz)
+- English into X: [German](https://dl.fbaipublicfiles.com/covost/covost_v2.en_de.tsv.tar.gz), 
+  [Catalan](https://dl.fbaipublicfiles.com/covost/covost_v2.en_ca.tsv.tar.gz),
+  [Chinese](https://dl.fbaipublicfiles.com/covost/covost_v2.en_zh-CN.tsv.tar.gz),
+  [Persian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_fa.tsv.tar.gz),
+  [Estonian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_et.tsv.tar.gz),
+  [Mongolian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_mn.tsv.tar.gz),
+  [Turkish](https://dl.fbaipublicfiles.com/covost/covost_v2.en_tr.tsv.tar.gz),
+  [Arabic](https://dl.fbaipublicfiles.com/covost/covost_v2.en_ar.tsv.tar.gz),
+  [Swedish](https://dl.fbaipublicfiles.com/covost/covost_v2.en_sv-SE.tsv.tar.gz),
+  [Latvian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_lv.tsv.tar.gz),
+  [Slovenian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_sl.tsv.tar.gz),
+  [Tamil](https://dl.fbaipublicfiles.com/covost/covost_v2.en_ta.tsv.tar.gz),
+  [Japanese](https://dl.fbaipublicfiles.com/covost/covost_v2.en_ja.tsv.tar.gz),
+  [Indonesian](https://dl.fbaipublicfiles.com/covost/covost_v2.en_id.tsv.tar.gz),
+  [Welsh](https://dl.fbaipublicfiles.com/covost/covost_v2.en_cy.tsv.tar.gz)
+3. Get data splits: we adopt the standard Common Voice development/test splits and an extended Common Voice train split 
+   to improve data utilization (see also Section 2.2 in [our paper](https://arxiv.org/pdf/2007.10310.pdf)). Use the 
+   following script to generate the data splits:
+    ```bash
+    python get_covost_splits.py \
+      --version 2 --src-lang <src_lang_code> --tgt-lang <tgt_lang_code> \
+      --root <root path to the translation TSV and output TSVs> \
+      --cv-tsv <path to validated.tsv>
+    ```
+   You should get 3 TSV files (`covost_v2.<src_lang_code>_<tgt_lang_code>.<split>.tsv`) for `train`, `dev` and 
+   `test` splits, respectively. Each of them has 4 columns: `path` (audio filename), `sentence` (transcript), 
+   `translation` and `client_id` (speaker ID).
 
 ### CoVoST 1
-1. Get voice clips and transcripts from Common Voice 2019-06-12 release:
-[French (fr)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/fr.tar.gz),
-[German (de)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/de.tar.gz),
-[Dutch (nl)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/nl.tar.gz),
-[Russian (ru)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/ru.tar.gz),
-[Spanish (es)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/es.tar.gz),
-[Italian (it)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/it.tar.gz),
-[Turkish (tr)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/tr.tar.gz),
-[Persian (fa)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/fa.tar.gz),
-[Swedish (sv-SE)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/sv-SE.tar.gz),
-[Mongolian (mn)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/mn.tar.gz),
-[Chinese (zh-CN)](https://voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4.s3.amazonaws.com/cv-corpus-3/zh-CN.tar.gz).
+1. Download [Common Voice audio clips and transcripts](https://commonvoice.mozilla.org/en/datasets) (version 3).
 
-2. Download [CoVoST translations](https://dl.fbaipublicfiles.com/covost/covost.zip),
-where `validated.<lang>_en.en` are matched with the transcripts in `validated.tsv`.
+2. Download CoVoST translations (`covost.<src_lang_code>_<tgt_lang_code>.tsv`, which matches the rows in 
+   `validated.tsv` from Common Voice): 
+   - X into English: [French](https://dl.fbaipublicfiles.com/covost/covost.fr_en.tsv.tar.gz),
+   [German](https://dl.fbaipublicfiles.com/covost/covost.de_en.tsv.tar.gz),
+   [Dutch](https://dl.fbaipublicfiles.com/covost/covost.nl_en.tsv.tar.gz),
+   [Russian](https://dl.fbaipublicfiles.com/covost/covost.ru_en.tsv.tar.gz),
+   [Spanish](https://dl.fbaipublicfiles.com/covost/covost.es_en.tsv.tar.gz),
+   [Italian](https://dl.fbaipublicfiles.com/covost/covost.it_en.tsv.tar.gz),
+   [Turkish](https://dl.fbaipublicfiles.com/covost/covost.tr_en.tsv.tar.gz),
+   [Persian](https://dl.fbaipublicfiles.com/covost/covost.fa_en.tsv.tar.gz),
+   [Swedish](https://dl.fbaipublicfiles.com/covost/covost.sv-SE_en.tsv.tar.gz),
+   [Mongolian](https://dl.fbaipublicfiles.com/covost/covost.mn_en.tsv.tar.gz),
+   [Chinese](https://dl.fbaipublicfiles.com/covost/covost.zh-CN_en.tsv.tar.gz)
+
+3. Get data splits: we use extended Common Voice splits to improve data utilization. Use the following script to 
+   generate the data splits:
+   ```bash
+    python get_covost_splits.py \
+      --version 1 --src-lang <src_lang_code> --tgt-lang <tgt_lang_code> \
+      --root <root path to the translation TSV and output TSVs> \
+      --cv-tsv <path to validated.tsv>
+    ```
+   You should get 3 TSV files (`covost.<src_lang_code>_<tgt_lang_code>.<split>.tsv`) for `train`, `dev` and `test` 
+   splits, respectively. Each of them has 4 columns: `path` (audio filename), `sentence` (transcript), `translation` and 
+   `client_id` (speaker ID).
 
 ### Tatoeba Evaluation Data
-1. [Download transcripts and translations](https://dl.fbaipublicfiles.com/covost/tatoeba.zip) and extract files
+1. Download [transcripts and translations](https://dl.fbaipublicfiles.com/covost/tatoeba.zip) and extract files
 to `data/tt/*`.
 
 2. Download speech data:
 ```bash
-python get_tt_speech.py --root <mp3 download root (default to data/tt/mp3)>
+python get_tt_speech.py \
+  --root <mp3 download root (default to data/tt/mp3)>
 ```
 
 ## Exploring Data
@@ -93,6 +163,10 @@ python get_tt_speech.py --root <mp3 download root (default to data/tt/mp3)>
 <a href="https://colab.research.google.com/drive/11GK7k7G1CG1qHbdA9Pz1RtQ3vlCkuohV">
     <img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg?style=flat-square">
 </a>
+
+## Model Training
+We provide [fairseq S2T example](https://github.com/pytorch/fairseq/tree/master/examples/speech_to_text) for speech 
+recognition/translation model training.
 
 ## License
 |  | License |

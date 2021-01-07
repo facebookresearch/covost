@@ -16,11 +16,11 @@ LANG_CODE_2_TO_3 = {
 }
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    '--root', type=str, default='data/tt/mp3', help='root path for MP3 files'
-)
-args = parser.parse_args()
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=str, default='data/tt/mp3',
+                        help='root path for MP3 files')
+    return parser.parse_args()
 
 
 def _download_mp3(root: str, lang: str, s_id: str, overwrite=False):
@@ -36,6 +36,7 @@ def _download_mp3(root: str, lang: str, s_id: str, overwrite=False):
 
 
 def main():
+    args = get_args()
     if not op.isdir(args.root):
         os.makedirs(args.root)
 
